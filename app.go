@@ -65,13 +65,13 @@ func check(key string, id string) {
 	val := int(app.Info.Summary.Throughput)
 	if val <= threshold {
 		if quiet {
-			log.Fatalf("CRITICAL:%d", val)
+                    log.Fatalf("CRITICAL:%s:%d", app.Info.Name, val)
 			return
 		}
 		log.Fatalf("CRITICAL: %s Throughput: %d rpm", app.Info.Name, val)
 	}
 	if quiet {
-		log.Printf("OK:%d", int(app.Info.Summary.Throughput))
+            log.Printf("OK:%s:%d", val, app.Info.Name)
 		return
 	}
 	log.Printf("OK: %s Throughput: %d rpm", app.Info.Name, int(app.Info.Summary.Throughput))
