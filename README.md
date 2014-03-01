@@ -16,8 +16,12 @@ This is a simple Go application that will check the NewRelic Requests Per Minute
 
 # Examples
 
-`newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000`
-`OK: Sample App Throughput: 1250 rpm`
+```
+$> newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000
+OK: Sample App Throughput: 1250 rpm
+```
 
-`newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000 -q`
-`OK:1250`
+```
+$> newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000 -q
+OK:1250
+```
