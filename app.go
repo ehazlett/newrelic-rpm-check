@@ -71,7 +71,7 @@ func check(key string, id string) {
 		log.Fatalf("CRITICAL: %s Throughput: %d rpm", app.Info.Name, val)
 	}
 	if simple {
-		log.Printf("OK:%s:%d", val, app.Info.Name)
+		log.Printf("OK:%s:%d", app.Info.Name, val)
 		return
 	}
 	log.Printf("OK: %s Throughput: %d rpm", app.Info.Name, int(app.Info.Summary.Throughput))
