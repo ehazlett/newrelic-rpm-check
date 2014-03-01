@@ -9,13 +9,13 @@ import (
 	"os"
 )
 
-const VERSION string = "0.0.1"
+const VERSION string = "0.0.2"
 
 var (
 	apiKey    string
 	appId     string
 	threshold int
-	quiet     bool
+	simple    bool
 	version   bool
 )
 
@@ -39,7 +39,7 @@ func init() {
 	flag.StringVar(&apiKey, "k", "", "NewRelic API Key")
 	flag.StringVar(&appId, "a", "", "NewRelic Application ID")
 	flag.IntVar(&threshold, "t", 0, "Threshold for throughput (min required)")
-	flag.BoolVar(&quiet, "q", false, "Only show status (STATUS:VALUE)")
+	flag.BoolVar(&simple, "s", false, "Simplified output (STATUS:APP_NAME:VALUE)")
 	flag.BoolVar(&version, "v", false, "Show version")
 }
 
@@ -64,14 +64,14 @@ func check(key string, id string) {
 	}
 	val := int(app.Info.Summary.Throughput)
 	if val <= threshold {
-		if quiet {
-                    log.Fatalf("CRITICAL:%s:%d", app.Info.Name, val)
+		if simple {
+			log.Fatalf("CRITICAL:%s:%d", app.Info.Name, val)
 			return
 		}
 		log.Fatalf("CRITICAL: %s Throughput: %d rpm", app.Info.Name, val)
 	}
-	if quiet {
-            log.Printf("OK:%s:%d", val, app.Info.Name)
+	if simple {
+		log.Printf("OK:%s:%d", val, app.Info.Name)
 		return
 	}
 	log.Printf("OK: %s Throughput: %d rpm", app.Info.Name, int(app.Info.Summary.Throughput))
