@@ -9,7 +9,7 @@ This is a simple Go application that will check the NewRelic Requests Per Minute
 * `-a`: NewRelic Application ID
 * `-k`: NewRelic API Key
 * `-t`: RPM Threshold (under this is considered critical)
-* `-q`: Only show the `STATUS:VALUE`
+* `-s`: Simplify the output `STATUS:APP_NAME:VALUE`
 
 # Usage
 `newrelic-rpm-check -a <app-id> -k <api-key> -t <threshold> [-q]`
@@ -22,6 +22,6 @@ OK: Sample App Throughput: 1250 rpm
 ```
 
 ```
-$> newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000 -q
-OK:1250
+$> newrelic-rpm-check -a 12345 -k abcdefg123456790ghijklmnop -t 1000 -s
+OK:Sample App:1250
 ```
